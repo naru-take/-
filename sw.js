@@ -1,4 +1,4 @@
-const CACHE="ietore-slim-v6";
+const CACHE="ietore-slim-v7";
 const ASSETS=["./","./index.html","./manifest.json","./icon-192.png","./icon-512.png"];
 
 self.addEventListener("install", event => {
@@ -15,22 +15,17 @@ self.addEventListener("activate", event => {
 });
 
 self.addEventListener("fetch", event => {
-  const req = event.request;
-
-  if (req.mode === "navigate") {
+  if (event.request.mode === "navigate") {
     event.respondWith(
-      fetch(req)
+      fetch(event.request)
         .then(response => {
-          const copy = response.clone();
-          caches.open(CACHE).then(cache => cache.put("./index.html", copy));
+          const copy=response.clone();
+          caches.open(CACHE).then(cache=>cache.put("./index.html",copy));
           return response;
         })
-        .catch(() => caches.match("./index.html"))
+        .catch(()=>caches.match("./index.html"))
     );
     return;
   }
-
-  event.respondWith(
-    caches.match(req).then(cached => cached || fetch(req))
-  );
+  event.respondWith(caches.match(event.request).then(r=>r||fetch(event.request)));
 });

@@ -68,12 +68,12 @@
     .notice{font-size:12px;color:#777;line-height:1.5}
     .danger{color:var(--danger)}
 
-    .menu-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-    .menu-tabs button{background:#ececec;color:#111}
-    .menu-tabs button.active{background:#111;color:#fff}
-    .preview-list{border-top:1px solid var(--line);margin-top:8px}
-    .preview-item{padding:12px 0;border-bottom:1px solid var(--line)}
-    .preview-item:last-child{border-bottom:0}
+    details.workout-menu{background:#fafafa;border-radius:14px;padding:12px 14px;margin-top:10px}
+    details.workout-menu summary{font-weight:800;font-size:16px;cursor:pointer}
+    .menu-line{padding:10px 0;border-top:1px solid var(--line)}
+    .menu-line:first-of-type{margin-top:10px}
+    .menu-line .name{font-weight:800}
+    .menu-line .detail{font-size:13px;color:var(--muted);margin-top:3px}
 
     footer{text-align:center;color:#999;font-size:12px;padding:16px}
     @media(max-width:430px){
@@ -101,18 +101,33 @@
   </section>
 
   <section class="card">
-    <div class="row">
-      <div>
-        <h2>筋トレメニューを見る</h2>
-        <div class="small">休養日でもいつでも確認できます</div>
-      </div>
-    </div>
-    <div class="menu-tabs" style="margin-top:12px">
-      <button class="secondary active" data-preview="A">全身A</button>
-      <button class="secondary" data-preview="B">全身B</button>
-      <button class="secondary" data-preview="CARDIO">有酸素</button>
-    </div>
-    <div id="workoutPreview" class="preview-list"></div>
+    <h2>筋トレメニュー一覧</h2>
+    <div class="small">休養日でもいつでも確認できます</div>
+
+    <details class="workout-menu" open>
+      <summary>全身A</summary>
+      <div class="menu-line"><div class="name">スクワット</div><div class="detail">15回 × 3セット</div></div>
+      <div class="menu-line"><div class="name">腕立て伏せ</div><div class="detail">10回 × 3セット</div></div>
+      <div class="menu-line"><div class="name">バックランジ</div><div class="detail">左右10回 × 2セット</div></div>
+      <div class="menu-line"><div class="name">ヒップリフト</div><div class="detail">20回 × 3セット</div></div>
+      <div class="menu-line"><div class="name">プランク</div><div class="detail">30秒 × 3セット</div></div>
+    </details>
+
+    <details class="workout-menu">
+      <summary>全身B</summary>
+      <div class="menu-line"><div class="name">ワイドスクワット</div><div class="detail">15回 × 3セット</div></div>
+      <div class="menu-line"><div class="name">膝つき腕立て</div><div class="detail">12回 × 3セット</div></div>
+      <div class="menu-line"><div class="name">サイドランジ</div><div class="detail">左右10回 × 2セット</div></div>
+      <div class="menu-line"><div class="name">バードドッグ</div><div class="detail">左右10回 × 3セット</div></div>
+      <div class="menu-line"><div class="name">サイドプランク</div><div class="detail">左右20秒 × 2セット</div></div>
+    </details>
+
+    <details class="workout-menu">
+      <summary>有酸素</summary>
+      <div class="menu-line"><div class="name">普通の足踏み</div><div class="detail">2分</div></div>
+      <div class="menu-line"><div class="name">速い足踏み</div><div class="detail">1分</div></div>
+      <div class="menu-line"><div class="name">繰り返し</div><div class="detail">合計20〜30分</div></div>
+    </details>
   </section>
 
   <section class="card">
@@ -322,40 +337,6 @@ function dayComplete(k,wd){
   const s=JSON.parse(localStorage.getItem(`done_${k}`)||"{}");
   return Object.values(s).filter(Boolean).length===p.ex.length;
 }
-
-const previewMenus = {
-  A:[
-    ["スクワット","15回 × 3セット"],
-    ["腕立て伏せ","10回 × 3セット"],
-    ["バックランジ","左右10回 × 2セット"],
-    ["ヒップリフト","20回 × 3セット"],
-    ["プランク","30秒 × 3セット"]
-  ],
-  B:[
-    ["ワイドスクワット","15回 × 3セット"],
-    ["膝つき腕立て","12回 × 3セット"],
-    ["サイドランジ","左右10回 × 2セット"],
-    ["バードドッグ","左右10回 × 3セット"],
-    ["サイドプランク","左右20秒 × 2セット"]
-  ],
-  CARDIO:[
-    ["普通の足踏み","2分"],
-    ["速い足踏み","1分"],
-    ["繰り返し","合計20〜30分"]
-  ]
-};
-function renderWorkoutPreview(key){
-  const box=$("workoutPreview");
-  box.innerHTML=previewMenus[key].map(([name,detail])=>
-    `<div class="preview-item"><div class="name">${name}</div><div class="detail">${upgradedDetail(name,detail)}</div></div>`
-  ).join("");
-  document.querySelectorAll("[data-preview]").forEach(b=>b.classList.toggle("active",b.dataset.preview===key));
-}
-document.querySelectorAll("[data-preview]").forEach(btn=>{
-  btn.addEventListener("click",()=>renderWorkoutPreview(btn.dataset.preview));
-});
-renderWorkoutPreview("A");
-
 function updateProgress(){
   const count=Object.values(done).filter(Boolean).length;
   const pct=Math.round(count/plan.ex.length*100);
@@ -563,6 +544,10 @@ function paint(){
   const min=Math.floor(seconds/60);
   const sec=seconds%60;
   $("timer").textContent=`${pad(min)}:${pad(sec)}`;
+}
+$("startTimer").onclick=()=>{
+  if(interval)return;
+  interval=setInterval(()=>{seconds--;paint();if(seconds<=0){clearInterval(interval);interval=null;if(navigator.vibrate)navigator.vibrate([200,100,200]);seconds=60;setTimeout(paint,700)}},1000)
 };
 $("resetTimer").onclick=()=>{clearInterval(interval);interval=null;seconds=60;paint()};
 
