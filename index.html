@@ -172,7 +172,7 @@
     }
   </style>
 </head>
-<body>
+<body data-app-version="15">
 <div class="wrap">
   <header>
     <h1>家トレ減量 30 DAYS</h1>
@@ -717,9 +717,22 @@ document.querySelectorAll(".form-card").forEach(card=>{
 closeImageModal.addEventListener("click",closeFormModal);
 imageModal.addEventListener("click",e=>{if(e.target===imageModal)closeFormModal();});
 
-if("serviceWorker" in navigator){
-  window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js"));
-}
 </script>
+
+<script>
+(async function(){
+  try{
+    if("serviceWorker" in navigator){
+      const regs = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(regs.map(r => r.unregister()));
+    }
+    if("caches" in window){
+      const keys = await caches.keys();
+      await Promise.all(keys.map(k => caches.delete(k)));
+    }
+  }catch(e){}
+})();
+</script>
+
 </body>
 </html>
