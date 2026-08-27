@@ -75,6 +75,37 @@
     .menu-line .name{font-weight:800}
     .menu-line .detail{font-size:13px;color:var(--muted);margin-top:3px}
 
+
+    details.exercise-help{border-top:1px solid var(--line);padding:0}
+    details.exercise-help:first-of-type{border-top:0}
+    details.exercise-help summary{
+      list-style:none;cursor:pointer;padding:12px 0;display:flex;justify-content:space-between;gap:10px;align-items:center
+    }
+    details.exercise-help summary::-webkit-details-marker{display:none}
+    .howto{padding:0 0 14px;color:#333;font-size:14px;line-height:1.65}
+    .howto b{display:block;margin-top:8px}
+    .demo{
+      height:86px;background:#f2f2f2;border-radius:14px;margin:4px 0 10px;
+      position:relative;overflow:hidden
+    }
+    .person{position:absolute;left:50%;top:50%;width:18px;height:18px;border:4px solid #111;border-radius:50%;
+      transform:translate(-50%,-36px)}
+    .person:before{content:"";position:absolute;left:50%;top:16px;width:4px;height:34px;background:#111;transform:translateX(-50%)}
+    .person:after{content:"";position:absolute;left:50%;top:38px;width:34px;height:4px;background:#111;transform:translateX(-50%) rotate(18deg)}
+    .demo.squat .person{animation:squatMove 1.4s ease-in-out infinite alternate}
+    .demo.lunge .person{animation:lungeMove 1.4s ease-in-out infinite alternate}
+    .demo.pushup .person{transform:translate(-50%,-18px) rotate(90deg);animation:pushMove 1.3s ease-in-out infinite alternate}
+    .demo.bridge .person{transform:translate(-50%,-10px) rotate(90deg);animation:bridgeMove 1.4s ease-in-out infinite alternate}
+    .demo.plank .person{transform:translate(-50%,-10px) rotate(90deg)}
+    .demo.bird .person{animation:birdMove 1.4s ease-in-out infinite alternate}
+    .demo.side .person{animation:sideMove 1.4s ease-in-out infinite alternate}
+    @keyframes squatMove{from{top:44%}to{top:62%}}
+    @keyframes lungeMove{from{left:44%;top:48%}to{left:58%;top:58%}}
+    @keyframes pushMove{from{top:45%}to{top:58%}}
+    @keyframes bridgeMove{from{top:58%}to{top:43%}}
+    @keyframes birdMove{from{transform:translate(-50%,-36px) rotate(-4deg)}to{transform:translate(-50%,-36px) rotate(8deg)}}
+    @keyframes sideMove{from{left:45%}to{left:58%}}
+
     footer{text-align:center;color:#999;font-size:12px;padding:16px}
     @media(max-width:430px){
       .grid3{grid-template-columns:1fr 1fr}
@@ -106,27 +137,158 @@
 
     <details class="workout-menu" open>
       <summary>全身A</summary>
-      <div class="menu-line"><div class="name">スクワット</div><div class="detail">15回 × 3セット</div></div>
-      <div class="menu-line"><div class="name">腕立て伏せ</div><div class="detail">10回 × 3セット</div></div>
-      <div class="menu-line"><div class="name">バックランジ</div><div class="detail">左右10回 × 2セット</div></div>
-      <div class="menu-line"><div class="name">ヒップリフト</div><div class="detail">20回 × 3セット</div></div>
-      <div class="menu-line"><div class="name">プランク</div><div class="detail">30秒 × 3セット</div></div>
+      <details class="exercise-help">
+      <summary>
+        <div><div class="name">スクワット</div><div class="detail">15回 × 3セット</div></div>
+        <div class="small">やり方 ▾</div>
+      </summary>
+      <div class="howto">
+        <div class="demo squat"><div class="person"></div></div>
+        <b>やり方</b>足を肩幅くらいに開き、お尻を後ろへ引きながらゆっくりしゃがむ。太ももが床と平行に近づいたら立つ。
+        <b>注意</b>膝が内側に入らない。つま先と膝の向きをそろえる。腰を丸めない。
+        <b>呼吸</b>しゃがむ時に吸い、立つ時に吐く。
+      </div>
+    </details>
+<details class="exercise-help">
+      <summary>
+        <div><div class="name">腕立て伏せ</div><div class="detail">10回 × 3セット</div></div>
+        <div class="small">やり方 ▾</div>
+      </summary>
+      <div class="howto">
+        <div class="demo pushup"><div class="person"></div></div>
+        <b>やり方</b>手を肩幅より少し広めに置き、頭からかかとまで一直線を保ったまま胸を床へ近づける。
+        <b>注意</b>腰だけ落とさない。肘は真横ではなく斜め後ろへ。
+        <b>呼吸</b>下げながら吸い、押し上げながら吐く。
+      </div>
+    </details>
+<details class="exercise-help">
+      <summary>
+        <div><div class="name">バックランジ</div><div class="detail">左右10回 × 2セット</div></div>
+        <div class="small">やり方 ▾</div>
+      </summary>
+      <div class="howto">
+        <div class="demo lunge"><div class="person"></div></div>
+        <b>やり方</b>立った姿勢から片脚を大きく後ろへ引き、前脚の膝を曲げて腰を真下へ落とす。前脚で床を押して戻る。
+        <b>注意</b>前膝が大きく内側へ入らない。上体を前に倒しすぎない。
+        <b>呼吸</b>下がる時に吸い、戻る時に吐く。
+      </div>
+    </details>
+<details class="exercise-help">
+      <summary>
+        <div><div class="name">ヒップリフト</div><div class="detail">20回 × 3セット</div></div>
+        <div class="small">やり方 ▾</div>
+      </summary>
+      <div class="howto">
+        <div class="demo bridge"><div class="person"></div></div>
+        <b>やり方</b>仰向けで膝を立て、かかとで床を押しながらお尻を持ち上げる。肩から膝まで一直線になったらゆっくり戻す。
+        <b>注意</b>腰を反りすぎない。お尻を締めて上げる。
+        <b>呼吸</b>上げる時に吐き、下ろす時に吸う。
+      </div>
+    </details>
+<details class="exercise-help">
+      <summary>
+        <div><div class="name">プランク</div><div class="detail">30秒 × 3セット</div></div>
+        <div class="small">やり方 ▾</div>
+      </summary>
+      <div class="howto">
+        <div class="demo plank"><div class="person"></div></div>
+        <b>やり方</b>肘を肩の真下に置き、つま先で支える。頭からかかとまで一直線をキープする。
+        <b>注意</b>お尻を上げすぎない・腰を反らない。息を止めない。
+        <b>呼吸</b>自然にゆっくり呼吸する。
+      </div>
+    </details>
     </details>
 
     <details class="workout-menu">
       <summary>全身B</summary>
-      <div class="menu-line"><div class="name">ワイドスクワット</div><div class="detail">15回 × 3セット</div></div>
-      <div class="menu-line"><div class="name">膝つき腕立て</div><div class="detail">12回 × 3セット</div></div>
-      <div class="menu-line"><div class="name">サイドランジ</div><div class="detail">左右10回 × 2セット</div></div>
-      <div class="menu-line"><div class="name">バードドッグ</div><div class="detail">左右10回 × 3セット</div></div>
-      <div class="menu-line"><div class="name">サイドプランク</div><div class="detail">左右20秒 × 2セット</div></div>
+      <details class="exercise-help">
+      <summary>
+        <div><div class="name">ワイドスクワット</div><div class="detail">15回 × 3セット</div></div>
+        <div class="small">やり方 ▾</div>
+      </summary>
+      <div class="howto">
+        <div class="demo squat"><div class="person"></div></div>
+        <b>やり方</b>足を肩幅より広く開き、つま先を少し外へ。膝をつま先方向へ開きながら腰を落とす。
+        <b>注意</b>膝が内側へ入らない。背中を丸めない。
+        <b>呼吸</b>しゃがむ時に吸い、立つ時に吐く。
+      </div>
+    </details>
+<details class="exercise-help">
+      <summary>
+        <div><div class="name">膝つき腕立て</div><div class="detail">12回 × 3セット</div></div>
+        <div class="small">やり方 ▾</div>
+      </summary>
+      <div class="howto">
+        <div class="demo pushup"><div class="person"></div></div>
+        <b>やり方</b>膝を床につき、肩から膝まで一直線を保って胸を床へ近づける。
+        <b>注意</b>腰を反らない。手の位置は肩より少し広め。
+        <b>呼吸</b>下げながら吸い、押し上げながら吐く。
+      </div>
+    </details>
+<details class="exercise-help">
+      <summary>
+        <div><div class="name">サイドランジ</div><div class="detail">左右10回 × 2セット</div></div>
+        <div class="small">やり方 ▾</div>
+      </summary>
+      <div class="howto">
+        <div class="demo side"><div class="person"></div></div>
+        <b>やり方</b>片脚を横へ大きく出し、出した側の膝を曲げてお尻を後ろへ引く。反対脚は伸ばす。
+        <b>注意</b>膝とつま先の向きをそろえる。曲げた膝が内側へ入らない。
+        <b>呼吸</b>沈む時に吸い、戻る時に吐く。
+      </div>
+    </details>
+<details class="exercise-help">
+      <summary>
+        <div><div class="name">バードドッグ</div><div class="detail">左右10回 × 3セット</div></div>
+        <div class="small">やり方 ▾</div>
+      </summary>
+      <div class="howto">
+        <div class="demo bird"><div class="person"></div></div>
+        <b>やり方</b>四つ這いから右手と左脚をまっすぐ伸ばし、戻す。反対側も同様。
+        <b>注意</b>腰を反らさず、骨盤を左右に傾けない。
+        <b>呼吸</b>伸ばす時に吐き、戻す時に吸う。
+      </div>
+    </details>
+<details class="exercise-help">
+      <summary>
+        <div><div class="name">サイドプランク</div><div class="detail">左右20秒 × 2セット</div></div>
+        <div class="small">やり方 ▾</div>
+      </summary>
+      <div class="howto">
+        <div class="demo plank"><div class="person"></div></div>
+        <b>やり方</b>横向きで肘を肩の真下に置き、腰を持ち上げて頭から足まで一直線に保つ。
+        <b>注意</b>肩をすくめない。腰が床へ落ちないようにする。
+        <b>呼吸</b>息を止めず自然に呼吸する。
+      </div>
+    </details>
     </details>
 
     <details class="workout-menu">
       <summary>有酸素</summary>
-      <div class="menu-line"><div class="name">普通の足踏み</div><div class="detail">2分</div></div>
-      <div class="menu-line"><div class="name">速い足踏み</div><div class="detail">1分</div></div>
-      <div class="menu-line"><div class="name">繰り返し</div><div class="detail">合計20〜30分</div></div>
+      <details class="exercise-help">
+      <summary>
+        <div><div class="name">普通の足踏み</div><div class="detail">2分</div></div>
+        <div class="small">やり方 ▾</div>
+      </summary>
+      <div class="howto">
+        <div class="demo "><div class="person"></div></div>
+        <b>やり方</b>その場で背筋を伸ばして足踏み。腕も軽く振る。
+        <b>注意</b>ドスンと着地せず、膝や腰に負担がない強さで。
+        <b>呼吸</b>会話できる程度の呼吸でOK。
+      </div>
+    </details>
+<details class="exercise-help">
+      <summary>
+        <div><div class="name">速い足踏み</div><div class="detail">1分</div></div>
+        <div class="small">やり方 ▾</div>
+      </summary>
+      <div class="howto">
+        <div class="demo "><div class="person"></div></div>
+        <b>やり方</b>普通の足踏みよりテンポを上げ、腕振りも少し大きくする。
+        <b>注意</b>無理に膝を高く上げなくていい。息が苦しすぎるなら速度を落とす。
+        <b>呼吸</b>少し息が弾む程度を目安に。
+      </div>
+    </details>
     </details>
   </section>
 
