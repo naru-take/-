@@ -1,4 +1,4 @@
-const CACHE="ietore-slim-v13";
+const CACHE="ietore-slim-v14";
 const ASSETS=["./","./index.html","./manifest.json","./icon-192.png","./icon-512.png"];
 
 self.addEventListener("install",event=>{
