@@ -563,11 +563,6 @@ function paint(){
   const min=Math.floor(seconds/60);
   const sec=seconds%60;
   $("timer").textContent=`${pad(min)}:${pad(sec)}`;
-}:${pad(sec)}`;
-}
-$("startTimer").onclick=()=>{
-  if(interval)return;
-  interval=setInterval(()=>{seconds--;paint();if(seconds<=0){clearInterval(interval);interval=null;if(navigator.vibrate)navigator.vibrate([200,100,200]);seconds=60;setTimeout(paint,700)}},1000)
 };
 $("resetTimer").onclick=()=>{clearInterval(interval);interval=null;seconds=60;paint()};
 
