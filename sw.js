@@ -1,3 +1,2 @@
-// v18 - no persistent service worker
-self.addEventListener("install",()=>self.skipWaiting());
-self.addEventListener("activate",event=>event.waitUntil((async()=>{try{for(const k of await caches.keys())await caches.delete(k);await self.registration.unregister();}catch(e){}})()));
+// v19 no persistent cache
+self.addEventListener("install",()=>self.skipWaiting());self.addEventListener("activate",e=>e.waitUntil((async()=>{try{for(const k of await caches.keys())await caches.delete(k);await self.registration.unregister();}catch(x){}})()));
