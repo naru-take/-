@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja" data-app-version="20">
+<html lang="ja" data-app-version="21">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071d3a">
@@ -16,9 +16,15 @@ h1{font-size:25px;margin:8px 0 18px}h2{font-size:20px;margin:0 0 12px}.muted{col
 .goal{background:#071d3a;color:#fff;text-align:center;border-radius:18px;padding:22px}.goal strong{display:block;color:#42c96b;font-size:44px}.facts{display:grid;gap:10px;margin:16px 0}.fact{padding:12px;border-bottom:1px solid #eee}
 .days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:14px 0}.day{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:#eee;font-weight:800}.day.on{background:#159447;color:#fff}
 .exercise-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #eee}.exercise-row span:first-child{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#eaf7ee;color:#087a35;font-weight:900}.exercise-row b{flex:1}
-.worktop{display:flex;justify-content:space-between;font-weight:800}.progress{height:7px;background:#e9edf2;border-radius:9px;overflow:hidden;margin:10px 0 18px}.progress i{display:block;height:100%;background:#159447}.workout{text-align:center}.workout h1{margin:6px 0}.target{font-size:46px;font-weight:900;color:#159447}.demo{height:270px;border-radius:20px;background:#f6f7f9;position:relative;overflow:hidden;margin:14px 0;display:flex;align-items:center;justify-content:center}
-.person{position:relative;width:150px;height:190px;animation:squat 2.2s ease-in-out infinite}.head{position:absolute;width:38px;height:38px;border-radius:50%;background:#c9916e;left:56px;top:8px}.torso{position:absolute;width:52px;height:85px;border-radius:20px;background:#17191d;left:49px;top:43px}.arm{position:absolute;width:78px;height:14px;border-radius:10px;background:#c9916e;left:83px;top:65px;transform-origin:left}.leg{position:absolute;width:20px;height:83px;border-radius:12px;background:#17191d;top:115px}.l1{left:55px;transform:rotate(10deg)}.l2{left:84px;transform:rotate(-10deg)}
-@keyframes squat{0%,100%{transform:translateY(0)}50%{transform:translateY(52px) scaleY(.86)}}.hint{background:#eef8f1;border-radius:14px;padding:12px;text-align:left;font-size:14px}.counter{font-size:30px;font-weight:900;margin:14px}.rest{text-align:center;padding-top:40px}.timer{font-size:64px;font-weight:900;color:#071d3a;margin:20px 0}.ring{width:150px;height:150px;border:14px solid #e7ece9;border-top-color:#159447;border-radius:50%;margin:20px auto;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.worktop{display:flex;justify-content:space-between;font-weight:800}.progress{height:7px;background:#e9edf2;border-radius:9px;overflow:hidden;margin:10px 0 18px}.progress i{display:block;height:100%;background:#159447}.workout{text-align:center}.workout h1{margin:6px 0}.target{font-size:46px;font-weight:900;color:#159447}.demo{height:310px;border-radius:22px;background:linear-gradient(180deg,#f8fafc,#eef2f5);position:relative;overflow:hidden;margin:14px 0;display:flex;align-items:center;justify-content:center}
+.demo:after{content:"";position:absolute;left:14%;right:14%;bottom:35px;height:3px;background:#d8dde3;border-radius:8px}
+.motion-wrap{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.motion-svg{width:88%;height:88%;overflow:visible}
+.skin{fill:#c98e68}.shirt{fill:#17191d}.shorts{fill:#25282d}.shoe{fill:#111318}.limb-skin{stroke:#c98e68;stroke-width:18;stroke-linecap:round}.limb-dark{stroke:#17191d;stroke-width:22;stroke-linecap:round}.joint{fill:#17191d}
+.poseA,.poseB{transform-box:fill-box;transform-origin:center;animation-duration:2.6s;animation-timing-function:ease-in-out;animation-iteration-count:infinite}.poseA{animation-name:fadeA}.poseB{animation-name:fadeB}
+@keyframes fadeA{0%,42%,100%{opacity:1}50%,92%{opacity:0}}@keyframes fadeB{0%,42%,100%{opacity:0}50%,92%{opacity:1}}
+.motion-note{position:absolute;right:14px;top:14px;background:#071d3a;color:#fff;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:800}
+.hint{background:#eef8f1;border-radius:14px;padding:12px;text-align:left;font-size:14px}.counter{font-size:30px;font-weight:900;margin:14px}.rest{text-align:center;padding-top:40px}.timer{font-size:64px;font-weight:900;color:#071d3a;margin:20px 0}.ring{width:150px;height:150px;border:14px solid #e7ece9;border-top-color:#159447;border-radius:50%;margin:20px auto;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{border:1px solid #e5e7eb;border-radius:15px;padding:15px}.stat strong{font-size:25px;display:block}.chart{height:180px;display:flex;align-items:end;gap:10px;padding-top:20px}.bar{flex:1;background:#cfead7;border-radius:8px 8px 0 0}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-top:1px solid #ddd;padding:8px 4px calc(8px + env(safe-area-inset-bottom));z-index:5}.nav button{border:0;background:none;font-size:11px;color:#667085}.nav b{display:block;font-size:20px;color:#071d3a;margin-bottom:2px}
 </style></head><body><div class="app">
 <header><div class="brand">🏋️ 家トレ減量 <b>30 DAYS</b></div><div class="sub">自宅で続ける、30日トレーニング</div></header>
@@ -39,9 +45,9 @@ h1{font-size:25px;margin:8px 0 18px}h2{font-size:20px;margin:0 0 12px}.muted{col
 <div class="card"><h2>Day 1　今日のメニュー</h2><div id="menu"></div></div><button class="primary" onclick="startWorkout()">トレーニングを開始する</button></section>
 
 <section id="workout" class="screen workout"><div class="worktop"><span>Day 1</span><span id="stepText">1 / 5</span></div><div class="progress"><i id="prog" style="width:20%"></i></div><h1 id="exName">スクワット</h1><div class="target" id="exTarget">15回</div>
-<div class="demo"><div class="person"><i class="head"></i><i class="torso"></i><i class="arm"></i><i class="leg l1"></i><i class="leg l2"></i></div></div>
+<div class="demo"><div class="motion-note">動きを見ながら実行</div><div id="motion" class="motion-wrap"></div></div>
 <div class="hint" id="hint">💡 背中を丸めず、お尻を後ろへ引きながらゆっくり上下。</div><div class="counter"><span id="count">0</span> / <span id="max">15</span></div>
-<button class="primary" onclick="rep()">＋ 1回</button><button class="secondary" onclick="finishExercise()">この種目を完了</button></section>
+<button id="pauseBtn" class="primary" onclick="toggleAuto()">一時停止</button><button class="secondary" onclick="finishExercise()">この種目を完了して次へ</button></section>
 
 <section id="rest" class="screen rest"><h2>休憩</h2><div class="muted">次の種目まで</div><div class="timer" id="timer">00:45</div><div class="ring"></div><div class="card">次の種目：<b id="nextEx">腕立て伏せ</b></div><button class="secondary" onclick="skipRest()">休憩をスキップ</button></section>
 
@@ -54,20 +60,79 @@ h1{font-size:25px;margin:8px 0 18px}h2{font-size:20px;margin:0 0 12px}.muted{col
 </div>
 <script>
 const exercises=[
-{name:"スクワット",target:"15回",max:15,hint:"💡 背中を丸めず、お尻を後ろへ引きながらゆっくり上下。"},
-{name:"腕立て伏せ",target:"10回",max:10,hint:"💡 頭からかかとまで一直線。胸を床へ近づけて押し戻す。"},
-{name:"バックランジ",target:"左右10回",max:20,hint:"💡 片脚を真後ろへ。上体を起こしたまま真下へ沈む。"},
-{name:"ヒップリフト",target:"20回",max:20,hint:"💡 かかとで床を押し、お尻を締めながら持ち上げる。"},
-{name:"プランク",target:"30秒",max:30,hint:"💡 頭からかかとまで一直線を保つ。腰を反らさない。"}];
-let idx=0,c=0,timerId=null,sec=45;
+{name:"スクワット",target:"15回",max:15,kind:"reps",hint:"💡 胸を起こしたまま、お尻を後ろへ。膝とつま先は同じ方向。"},
+{name:"腕立て伏せ",target:"10回",max:10,kind:"reps",hint:"💡 頭から膝またはかかとまで一直線。胸を床へ近づける。"},
+{name:"バックランジ",target:"左右10回",max:20,kind:"reps",hint:"💡 片脚を真後ろへ引き、前脚のかかとで押して戻る。"},
+{name:"ヒップリフト",target:"20回",max:20,kind:"reps",hint:"💡 かかとで床を押し、お尻を締めて肩〜膝を一直線に。"},
+{name:"プランク",target:"30秒",max:30,kind:"seconds",hint:"💡 肘の真上に肩。頭〜かかとを一直線に保つ。"}];
+let idx=0,c=0,timerId=null,sec=45,autoId=null,paused=false;
+
 function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");scrollTo(0,0)}
 function makePlan(){localStorage.setItem("profile",JSON.stringify({age:age.value,weight:weight.value,goal:goal.value,level:level.value}));goalOut.textContent=(+goal.value).toFixed(1)+" kg";show("home")}
 function renderDays(){days.innerHTML="";for(let i=1;i<=30;i++){let d=document.createElement("div");d.className="day "+([1,3,5,6].includes((i-1)%7)?"on":"");d.textContent=i;days.appendChild(d)}}
 function renderMenu(){menu.innerHTML=exercises.map((e,i)=>`<div class="exercise-row"><span>${i+1}</span><b>${e.name}</b><small>${e.target}</small></div>`).join("")}
 function startWorkout(){idx=0;c=0;loadEx();show("workout")}
-function loadEx(){let e=exercises[idx];exName.textContent=e.name;exTarget.textContent=e.target;max.textContent=e.max;count.textContent=c=0;hint.textContent=e.hint;stepText.textContent=`${idx+1} / ${exercises.length}`;prog.style.width=((idx+1)/exercises.length*100)+"%"}
-function rep(){let e=exercises[idx];if(c<e.max)count.textContent=++c}
-function finishExercise(){if(idx>=exercises.length-1){let n=+(localStorage.getItem("done")||0)+1;localStorage.setItem("done",n);done.textContent=n+"回";streak.textContent=n+"日";show("record");return}nextEx.textContent=exercises[idx+1].name;sec=45;timer.textContent="00:45";show("rest");clearInterval(timerId);timerId=setInterval(()=>{sec--;timer.textContent="00:"+String(sec).padStart(2,"0");if(sec<=0)skipRest()},1000)}
+
+function svgWrap(a,b){return `<svg class="motion-svg" viewBox="0 0 320 260" aria-hidden="true">${a}${b}</svg>`}
+function personStanding(cls="poseA"){return `<g class="${cls}">
+<ellipse class="skin" cx="160" cy="47" rx="23" ry="25"/><rect class="shirt" x="132" y="72" width="56" height="78" rx="24"/>
+<line class="limb-skin" x1="139" y1="88" x2="91" y2="105"/><line class="limb-skin" x1="181" y1="88" x2="229" y2="105"/>
+<line class="limb-dark" x1="147" y1="145" x2="139" y2="211"/><line class="limb-dark" x1="173" y1="145" x2="181" y2="211"/>
+<line class="limb-dark" x1="136" y1="213" x2="116" y2="213"/><line class="limb-dark" x1="184" y1="213" x2="204" y2="213"/></g>`}
+function personSquat(cls="poseB"){return `<g class="${cls}">
+<ellipse class="skin" cx="160" cy="83" rx="23" ry="25"/><rect class="shirt" x="132" y="106" width="56" height="67" rx="22"/>
+<line class="limb-skin" x1="137" y1="123" x2="84" y2="125"/><line class="limb-skin" x1="183" y1="123" x2="236" y2="125"/>
+<line class="limb-dark" x1="146" y1="168" x2="112" y2="190"/><line class="limb-dark" x1="112" y1="190" x2="108" y2="222"/>
+<line class="limb-dark" x1="174" y1="168" x2="208" y2="190"/><line class="limb-dark" x1="208" y1="190" x2="212" y2="222"/>
+<line class="limb-dark" x1="105" y1="223" x2="84" y2="223"/><line class="limb-dark" x1="215" y1="223" x2="236" y2="223"/></g>`}
+function pushup(up=true,cls="poseA"){let y=up?116:145;return `<g class="${cls}">
+<ellipse class="skin" cx="85" cy="${y-25}" rx="20" ry="21"/><rect class="shirt" x="101" y="${y-34}" width="92" height="42" rx="20" transform="rotate(8 101 ${y-34})"/>
+<line class="limb-dark" x1="183" y1="${y-10}" x2="247" y2="${y+8}"/><line class="limb-dark" x1="247" y1="${y+8}" x2="279" y2="${y+10}"/>
+<line class="limb-skin" x1="122" y1="${y}" x2="107" y2="${up?185:178}"/><line class="limb-skin" x1="158" y1="${y+2}" x2="154" y2="${up?185:178}"/></g>`}
+function lunge(back=false,cls="poseA"){return back?`<g class="${cls}">
+<ellipse class="skin" cx="151" cy="63" rx="22" ry="24"/><rect class="shirt" x="125" y="86" width="52" height="72" rx="22"/>
+<line class="limb-skin" x1="132" y1="103" x2="104" y2="139"/><line class="limb-skin" x1="170" y1="103" x2="197" y2="137"/>
+<line class="limb-dark" x1="142" y1="153" x2="116" y2="190"/><line class="limb-dark" x1="116" y1="190" x2="103" y2="221"/>
+<line class="limb-dark" x1="160" y1="154" x2="204" y2="179"/><line class="limb-dark" x1="204" y1="179" x2="244" y2="220"/></g>`:personStanding(cls)}
+function bridge(up=false,cls="poseA"){let hip=up?117:156;return `<g class="${cls}">
+<ellipse class="skin" cx="66" cy="158" rx="20" ry="21"/><rect class="shirt" x="85" y="${up?129:145}" width="96" height="42" rx="20" transform="rotate(${up?-12:5} 85 145)"/>
+<line class="limb-dark" x1="174" y1="${hip}" x2="220" y2="173"/><line class="limb-dark" x1="220" y1="173" x2="254" y2="211"/>
+<line class="limb-dark" x1="167" y1="${hip+6}" x2="202" y2="182"/><line class="limb-dark" x1="202" y1="182" x2="223" y2="212"/>
+<line class="limb-skin" x1="102" y1="171" x2="72" y2="202"/></g>`}
+function plank(cls="poseA"){return `<g class="${cls}">
+<ellipse class="skin" cx="76" cy="116" rx="20" ry="21"/><rect class="shirt" x="96" y="104" width="100" height="42" rx="20" transform="rotate(5 96 104)"/>
+<line class="limb-dark" x1="188" y1="126" x2="247" y2="144"/><line class="limb-dark" x1="247" y1="144" x2="280" y2="147"/>
+<line class="limb-skin" x1="119" y1="138" x2="104" y2="185"/><line class="limb-skin" x1="148" y1="140" x2="140" y2="185"/></g>`}
+function renderMotion(name){
+ let a="",b="";
+ if(name==="スクワット"){a=personStanding("poseA");b=personSquat("poseB")}
+ else if(name==="腕立て伏せ"){a=pushup(true,"poseA");b=pushup(false,"poseB")}
+ else if(name==="バックランジ"){a=lunge(false,"poseA");b=lunge(true,"poseB")}
+ else if(name==="ヒップリフト"){a=bridge(false,"poseA");b=bridge(true,"poseB")}
+ else {a=plank("poseA");b=plank("poseB")}
+ motion.innerHTML=svgWrap(a,b);
+}
+function stopAuto(){clearInterval(autoId);autoId=null}
+function startAuto(){
+ stopAuto(); paused=false; pauseBtn.textContent="一時停止";
+ let e=exercises[idx];
+ if(e.kind==="seconds"){
+   autoId=setInterval(()=>{if(!paused&&c<e.max){c++;count.textContent=c;if(c>=e.max){stopAuto();setTimeout(finishExercise,500)}}},1000)
+ } else {
+   autoId=setInterval(()=>{if(!paused&&c<e.max){c++;count.textContent=c;if(navigator.vibrate) navigator.vibrate(15);if(c>=e.max){stopAuto();setTimeout(finishExercise,650)}}},2600)
+ }
+}
+function toggleAuto(){paused=!paused;pauseBtn.textContent=paused?"再開":"一時停止"}
+function loadEx(){
+ let e=exercises[idx];exName.textContent=e.name;exTarget.textContent=e.target;max.textContent=e.max;count.textContent=c=0;hint.textContent=e.hint;
+ stepText.textContent=`${idx+1} / ${exercises.length}`;prog.style.width=((idx+1)/exercises.length*100)+"%";renderMotion(e.name);startAuto()
+}
+function finishExercise(){
+ stopAuto();
+ if(idx>=exercises.length-1){let n=+(localStorage.getItem("done")||0)+1;localStorage.setItem("done",n);done.textContent=n+"回";streak.textContent=n+"日";show("record");return}
+ nextEx.textContent=exercises[idx+1].name;sec=45;timer.textContent="00:45";show("rest");clearInterval(timerId);
+ timerId=setInterval(()=>{sec--;timer.textContent="00:"+String(sec).padStart(2,"0");if(sec<=0)skipRest()},1000)
+}
 function skipRest(){clearInterval(timerId);idx++;loadEx();show("workout")}
 renderDays();renderMenu();done.textContent=(localStorage.getItem("done")||0)+"回";streak.textContent=(localStorage.getItem("done")||0)+"日";
 let p=JSON.parse(localStorage.getItem("profile")||"null");if(p){goalOut.textContent=(+p.goal).toFixed(1)+" kg";show("home")}
