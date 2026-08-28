@@ -1,2 +1,2 @@
-// v19 no persistent cache
-self.addEventListener("install",()=>self.skipWaiting());self.addEventListener("activate",e=>e.waitUntil((async()=>{try{for(const k of await caches.keys())await caches.delete(k);await self.registration.unregister();}catch(x){}})()));
+// v20: persistent caching disabled
+self.addEventListener("install",()=>self.skipWaiting());self.addEventListener("activate",e=>e.waitUntil(self.registration.unregister()));
