@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja" data-app-version="25">
+<html lang="ja" data-app-version="28">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -24,7 +24,7 @@ main{padding:18px}.screen{display:none}.screen.active{display:block}.card{border
 @media(max-width:390px){main{padding:14px}.visual{height:365px}.title{font-size:26px}.target{font-size:42px}}
 </style></head>
 <body><div class="app">
-<header class="top"><div class="logo">🏋️ 家トレ減量 <b>30 DAYS</b></div><div class="v">v25</div></header>
+<header class="top"><div class="logo">🏋️ 家トレ減量 <b>30 DAYS</b></div><div class="v">v28</div></header>
 <main>
 <section id="home" class="screen active">
  <div class="card hero"><div class="heroRow"><div><div class="eyebrow">30 DAY PROGRAM</div><h1 class="title">脂肪を落として<br>腹筋を見せる</h1><p class="sub">器具なし・自宅用。A/Bを自動で振り分け。</p></div><div class="ring"><span><span id="doneDays">0</span><small>/30</small></span></div></div><div class="goal">今日の目標：筋トレ＋腹筋＋短い有酸素</div></div>
@@ -55,22 +55,22 @@ main{padding:18px}.screen{display:none}.screen.active{display:block}.card{border
 </div>
 <script>
 const A=[
-{name:"スクワット",target:"15回",max:15,kind:"reps",img:"squat.jpg",tip:"💡 胸を起こし、お尻を後ろへ。膝とつま先は同じ方向。"},
-{name:"バックランジ",target:"左右 各12回",max:24,kind:"reps",img:"back_lunge.jpg",tip:"💡 片脚を真後ろへ。上体を立てて真下へ沈む。"},
-{name:"ヒップリフト",target:"15回",max:15,kind:"reps",img:"hip_bridge_a.jpg",tip:"💡 かかとで床を押し、お尻を締めて上げ下げ。"},
-{name:"プランク",target:"30秒",max:30,kind:"seconds",img:"plank.jpg",tip:"💡 頭からかかとまで一直線。腰を反らさない。"},
-{name:"クランチ",target:"15回 × 2",max:30,kind:"reps",img:"crunch.svg",tip:"💡 首を引かず、みぞおちを骨盤へ近づける意識。"},
-{name:"デッドバグ",target:"左右10回 × 2",max:40,kind:"reps",img:"dead_bug.svg",tip:"💡 腰を床につけたまま、対角の手脚を伸ばす。"},
-{name:"マウンテンクライマー",target:"30秒",max:30,kind:"seconds",img:"mountain_climber.svg",tip:"💡 腰を上げすぎず、膝を交互に胸へ。"}
+{name:"スクワット",target:"15回",max:15,kind:"reps",img:"squat.png",tip:"💡 胸を起こし、お尻を後ろへ。膝とつま先は同じ方向。"},
+{name:"バックランジ",target:"左右 各12回",max:24,kind:"reps",img:"back_lunge.png",tip:"💡 片脚を真後ろへ。上体を立てて真下へ沈む。"},
+{name:"ヒップリフト",target:"15回",max:15,kind:"reps",img:"hip_bridge.png",tip:"💡 かかとで床を押し、お尻を締めて上げ下げ。"},
+{name:"プランク",target:"30秒",max:30,kind:"seconds",img:"plank.png",tip:"💡 頭からかかとまで一直線。腰を反らさない。"},
+{name:"クランチ",target:"15回 × 2",max:30,kind:"reps",img:"crunch.png",tip:"💡 首を引かず、みぞおちを骨盤へ近づける意識。"},
+{name:"デッドバグ",target:"左右10回 × 2",max:40,kind:"reps",img:"dead_bug.png",tip:"💡 腰を床につけたまま、対角の手脚を伸ばす。"},
+{name:"マウンテンクライマー",target:"30秒",max:30,kind:"seconds",img:"mountain_climber.png",tip:"💡 腰を上げすぎず、膝を交互に胸へ。"}
 ];
 const B=[
-{name:"ワイドスクワット",target:"15回",max:15,kind:"reps",img:"wide_squat.jpg",tip:"💡 足を広めに。膝とつま先を同じ方向へ。"},
-{name:"腕立て伏せ",target:"12回",max:12,kind:"reps",img:"pushup.jpg",tip:"💡 きつければ膝つきでOK。胸を床へ近づける。"},
-{name:"バードドッグ",target:"左右 各12回",max:24,kind:"reps",img:"bird_dog.jpg",tip:"💡 右手＋左脚、左手＋右脚をまっすぐ伸ばす。"},
-{name:"サイドプランク",target:"左右 各30秒",max:60,kind:"seconds",img:"side_plank.jpg",tip:"💡 肩の真下に肘。腰を落とさず一直線。"},
-{name:"リバースクランチ",target:"12回 × 2",max:24,kind:"reps",img:"reverse_crunch.svg",tip:"💡 反動ではなく、骨盤を丸めて膝を胸へ。"},
-{name:"デッドバグ",target:"左右10回 × 2",max:40,kind:"reps",img:"dead_bug.svg",tip:"💡 腰を浮かせず、ゆっくり対角の手脚を伸ばす。"},
-{name:"マウンテンクライマー",target:"30秒 × 2",max:60,kind:"seconds",img:"mountain_climber.svg",tip:"💡 一定のテンポで。腰が上下しすぎないように。"}
+{name:"ワイドスクワット",target:"15回",max:15,kind:"reps",img:"wide_squat.png",tip:"💡 足を広めに。膝とつま先を同じ方向へ。"},
+{name:"腕立て伏せ",target:"12回",max:12,kind:"reps",img:"pushup.png",tip:"💡 きつければ膝つきでOK。胸を床へ近づける。"},
+{name:"バードドッグ",target:"左右 各12回",max:24,kind:"reps",img:"bird_dog.png",tip:"💡 右手＋左脚、左手＋右脚をまっすぐ伸ばす。"},
+{name:"サイドプランク",target:"左右 各30秒",max:60,kind:"seconds",img:"side_plank.png",tip:"💡 肩の真下に肘。腰を落とさず一直線。"},
+{name:"リバースクランチ",target:"12回 × 2",max:24,kind:"reps",img:"reverse_crunch.png",tip:"💡 反動ではなく、骨盤を丸めて膝を胸へ。"},
+{name:"デッドバグ",target:"左右10回 × 2",max:40,kind:"reps",img:"dead_bug.png",tip:"💡 腰を浮かせず、ゆっくり対角の手脚を伸ばす。"},
+{name:"マウンテンクライマー",target:"30秒 × 2",max:60,kind:"seconds",img:"mountain_climber.png",tip:"💡 一定のテンポで。腰が上下しすぎないように。"}
 ];
 const schedule=["A","B","A","REST","B","A","B","REST","A","B","A","REST","B","A","B","REST","A","B","A","REST","B","A","B","REST","A","B","A","REST","B","A"];
 let activePlan=A,idx=0,count=0,timer=null,paused=false,restTimer=null,restLeft=45,currentDay=1;
