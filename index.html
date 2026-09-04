@@ -1,137 +1,230 @@
 <!doctype html>
-<html lang="ja" data-app-version="23">
+<html lang="ja" data-app-version="24">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#071d3a">
+<meta name="theme-color" content="#0b1f3a">
 <link rel="manifest" href="manifest.json">
 <title>家トレ減量 30DAYS</title>
 <style>
-:root{--navy:#071d3a;--green:#0aa36c;--blue:#3da7ef;--pink:#f45b86;--bg:#f4f7fb;--line:#e4e8ef;--text:#13213a}
-*{box-sizing:border-box}html,body{margin:0;background:#eef2f7;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif}
-button{font:inherit}.app{max-width:520px;margin:0 auto;min-height:100vh;background:#fff;position:relative;padding-bottom:78px}
-.top{background:var(--navy);color:#fff;padding:18px 18px 16px;position:sticky;top:0;z-index:4}
-.brand{font-weight:900;font-size:24px;letter-spacing:.2px}.brand em{font-style:normal;color:#f2b82c}.ver{font-size:11px;opacity:.6;margin-top:2px}
-main{padding:16px}.screen{display:none}.screen.active{display:block}
-.hero{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
-.hero h1{font-size:28px;line-height:1.15;margin:4px 0}.hero .bubble{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:#e9f8f2;font-size:30px}
-.muted{color:#718096;font-size:13px}.card{border:1px solid var(--line);border-radius:20px;background:#fff;padding:15px;margin:12px 0;box-shadow:0 4px 18px #11233b0b}
-.days{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}.day{aspect-ratio:1;border-radius:50%;border:1px solid #d9dfe7;background:#fff;display:grid;place-items:center;font-weight:800}.day.today{background:var(--green);color:#fff;border-color:var(--green)}.day.done{background:#dff5eb;color:#08764f;border-color:#b9ead7}
-.primary{width:100%;border:0;border-radius:999px;padding:15px 16px;background:var(--green);color:#fff;font-weight:900;font-size:17px}.ghost{width:100%;border:1px solid #cfd6e0;border-radius:999px;padding:13px;background:#fff;font-weight:800;margin-top:10px}
-.choice{border-radius:20px;padding:18px;color:#fff;margin:13px 0;position:relative;overflow:hidden}.choice h2{font-size:28px;margin:0 0 6px}.choice p{margin:0;font-size:15px}.choice.a{background:linear-gradient(135deg,#2797eb,#65b9f4)}.choice.b{background:linear-gradient(135deg,#f04c78,#f783a2)}.choice button{position:absolute;inset:0;border:0;background:transparent}
-.exercise-list{display:grid;gap:10px}.exercise-row{display:grid;grid-template-columns:58px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:9px}.exercise-row img{width:58px;height:58px;object-fit:cover;border-radius:12px}.exercise-row b{font-size:15px}.exercise-row small{font-weight:800;color:#5d6a7c}
-.player{padding-top:4px}.player-head{display:flex;justify-content:space-between;font-weight:900;font-size:16px}.progress{height:8px;background:#e8edf3;border-radius:999px;overflow:hidden;margin:10px 0 15px}.progress i{display:block;height:100%;background:var(--green);width:20%;transition:.3s}
-.player h1{font-size:30px;margin:4px 0 2px}.target{font-size:17px;color:#566176}.visual{height:500px;border-radius:24px;background:#f2f5f8;overflow:hidden;margin:14px 0;position:relative}.visual img{width:100%;height:100%;object-fit:contain;object-position:center;animation:breathe 2.4s ease-in-out infinite}.visual .badge{position:absolute;right:12px;top:12px;background:#fff;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:900;box-shadow:0 4px 15px #0001}
-@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
-.count{text-align:center;font-size:52px;font-weight:950;letter-spacing:-2px}.count small{font-size:18px;color:#7d8795;letter-spacing:0}.tip{background:#eef9f5;border-radius:16px;padding:13px 14px;margin:10px 0 14px;line-height:1.5}
-.rest{text-align:center;padding-top:28px}.rest h1{font-size:34px}.ring{width:200px;height:200px;border-radius:50%;background:conic-gradient(var(--green) var(--deg,0deg),#e1ebe7 0);display:grid;place-items:center;margin:25px auto}.ring:after{content:"";width:156px;height:156px;background:#fff;border-radius:50%;position:absolute}.ring-wrap{position:relative}.restnum{position:absolute;inset:0;display:grid;place-items:center;font-weight:950;font-size:64px;z-index:2}.next{font-size:16px}.complete{text-align:center;padding-top:20px}.complete .emoji{font-size:72px}.complete h1{font-size:30px}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}.summary div{border:1px solid var(--line);border-radius:15px;padding:12px 6px}.summary b{display:block;font-size:22px}
-.record-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{border:1px solid var(--line);border-radius:17px;padding:15px}.stat strong{display:block;font-size:27px;margin-top:4px}.note{font-size:12px;color:#788395;line-height:1.5}
-.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-top:1px solid #dde3eb;padding:8px 4px calc(8px + env(safe-area-inset-bottom));z-index:5}.nav button{border:0;background:none;color:#637083;font-size:11px}.nav b{display:block;font-size:21px;color:var(--navy);margin-bottom:2px}
-.hidden-nav .nav{display:none}.screen-title{font-size:26px;margin:3px 0 8px}
+:root{
+  --navy:#0b1f3a;--green:#16a36c;--green2:#e9f8f1;--blue:#49a8f2;--blue2:#edf7ff;
+  --pink:#f06b92;--pink2:#fff0f5;--ink:#10203b;--muted:#718096;--line:#e7ebf1;--bg:#f4f7fb;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#eef2f7;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif}
+button{font:inherit;border:0}
+.app{width:min(100%,520px);min-height:100dvh;margin:auto;background:#fff;padding-bottom:88px;overflow:hidden}
+.top{padding:18px 20px 14px;background:#fff;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.logo{font-weight:900;font-size:22px}.logo b{color:#f2b72b}.v{font-size:11px;color:#9aa5b5}
+main{padding:18px}
+.screen{display:none}.screen.active{display:block}
+h1,h2,h3,p{margin-top:0}
+.eyebrow{font-size:13px;color:var(--muted);font-weight:700;margin-bottom:5px}
+.title{font-size:30px;line-height:1.1;margin-bottom:8px}
+.sub{color:var(--muted);font-size:14px;line-height:1.55}
+.card{border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:0 8px 28px rgba(17,34,68,.05)}
+.hero{padding:20px;background:linear-gradient(145deg,#0b1f3a,#17365f);color:#fff;margin-bottom:16px}
+.hero .sub{color:#d9e4f3}.heroRow{display:flex;justify-content:space-between;gap:18px;align-items:center}
+.ring{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#20b476 0 12%,rgba(255,255,255,.18) 12% 100%);position:relative;flex:0 0 auto}
+.ring:after{content:"";position:absolute;inset:7px;border-radius:50%;background:#102a4b}.ring span{position:relative;z-index:1;font-weight:900;font-size:22px}.ring small{font-size:10px;font-weight:700}
+.sectionTitle{font-size:18px;margin:18px 0 10px}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+.day{aspect-ratio:1;border-radius:12px;background:#f5f7fa;display:grid;place-items:center;font-weight:800;font-size:13px;color:#526078}
+.day.done{background:var(--green2);color:var(--green)}.day.today{background:var(--green);color:#fff;box-shadow:0 5px 16px rgba(22,163,108,.25)}
+.cta{width:100%;padding:16px 18px;border-radius:16px;background:var(--green);color:#fff;font-weight:900;font-size:17px;margin-top:16px}
+.secondary{width:100%;padding:14px;border-radius:14px;background:#f4f6f9;color:var(--ink);font-weight:800;margin-top:10px}
+.planGrid{display:grid;gap:13px}
+.plan{padding:18px;text-align:left;position:relative;overflow:hidden;border-radius:24px}
+.plan.blue{background:var(--blue2);border:1px solid #dbeefe}.plan.pink{background:var(--pink2);border:1px solid #ffe0e9}
+.planTag{font-size:12px;font-weight:900;letter-spacing:.06em}.blue .planTag{color:#2389d3}.pink .planTag{color:#d84d75}
+.plan h2{font-size:23px;margin:4px 0 6px}.plan p{font-size:13px;color:#61718a;margin:0 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{background:#fff;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:800}
+.exerciseList{display:grid;gap:9px;margin-top:16px}
+.exerciseItem{display:flex;align-items:center;gap:12px;padding:10px;background:#fff;border-radius:16px;border:1px solid rgba(0,0,0,.05)}
+.exerciseItem img{width:68px;height:68px;object-fit:cover;border-radius:13px;background:#f2f4f7}
+.exerciseItem b{display:block;font-size:14px}.exerciseItem span{font-size:12px;color:var(--muted)}
+.back{background:none;color:var(--ink);font-weight:900;padding:0;margin-bottom:14px}
+.workTop{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.workTop b{font-size:16px}.workTop span{font-weight:900}
+.progress{height:7px;border-radius:99px;background:#e8ecf1;overflow:hidden;margin-bottom:20px}.progress i{display:block;height:100%;background:var(--green);width:20%;transition:.25s}
+.workTitle{text-align:center;font-size:31px;margin-bottom:4px}.target{text-align:center;font-size:48px;line-height:1;font-weight:950;color:var(--green);margin:0 0 14px}
+.visual{height:430px;border-radius:26px;overflow:hidden;background:#f3f5f7;border:1px solid var(--line);position:relative}
+.visual img{width:100%;height:100%;object-fit:contain;display:block}
+.guideBadge{position:absolute;right:12px;top:12px;background:var(--navy);color:#fff;border-radius:999px;padding:9px 12px;font-size:12px;font-weight:900}
+.tip{margin:13px 0 0;padding:14px 15px;border-radius:18px;background:#f0faf5;line-height:1.55;font-size:14px}
+.countbox{text-align:center;padding:16px 0 4px}.count{font-size:44px;font-weight:950}.count small{font-size:16px;color:var(--muted)}
+.sessionBtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.sessionBtns button{padding:14px;border-radius:14px;font-weight:900}.pause{background:#f2f4f7}.next{background:var(--green);color:#fff}
+.restWrap{text-align:center;padding-top:45px}.restCircle{width:220px;height:220px;border-radius:50%;margin:22px auto;display:grid;place-items:center;background:conic-gradient(var(--green) var(--rest),#e9edf2 0);position:relative}
+.restCircle:after{content:"";position:absolute;inset:14px;background:#fff;border-radius:50%}.restNum{position:relative;z-index:1;font-size:64px;font-weight:950}.nextCard{display:flex;align-items:center;gap:14px;padding:12px;text-align:left;margin-top:24px}.nextCard img{width:84px;height:84px;border-radius:16px;object-fit:cover}.nextCard small{color:var(--muted)}.nextCard b{display:block;font-size:18px;margin-top:3px}
+.doneBox{text-align:center;padding:42px 20px 20px}.check{width:104px;height:104px;border-radius:50%;background:var(--green2);color:var(--green);display:grid;place-items:center;margin:0 auto 18px;font-size:52px;font-weight:950}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:22px 0}.stat{padding:14px 6px;background:#f5f7fa;border-radius:16px}.stat b{display:block;font-size:21px}.stat small{color:var(--muted);font-size:11px}
+.nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,520px);height:76px;background:rgba(255,255,255,.96);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);padding-bottom:env(safe-area-inset-bottom);z-index:10}
+.nav button{background:none;color:#718096;font-size:11px;font-weight:800}.nav button b{display:block;font-size:20px;color:var(--ink);margin-bottom:2px}
+.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%) translateY(20px);background:#10203b;color:#fff;padding:11px 15px;border-radius:999px;font-size:12px;opacity:0;pointer-events:none;transition:.2s;z-index:20}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:390px){main{padding:14px}.visual{height:365px}.title{font-size:27px}.target{font-size:43px}}
 </style>
 </head>
 <body>
-<div class="app" id="app">
-<header class="top"><div class="brand">家トレ減量 <em>30DAYS</em></div><div class="ver">v23</div></header>
-<main>
-<section id="home" class="screen active">
-<div class="hero"><div><div class="muted">今日の積み重ねが</div><h1>新しい自分を<br>つくる</h1></div><div class="bubble">🔥</div></div>
-<div class="days" id="days"></div>
-<div class="card"><b>今日のトレーニング</b><div class="muted" id="todayText">Aメニュー・5種目</div></div>
-<button class="primary" onclick="showMenu()">今日のトレーニングを始める</button>
-</section>
+<div class="app">
+  <header class="top"><div class="logo">🏋️ 家トレ減量 <b>30 DAYS</b></div><div class="v">v24</div></header>
 
-<section id="menu" class="screen">
-<h1 class="screen-title">今日はどちらの<br>メニューでやる？</h1>
-<div class="choice a"><h2>Aメニュー</h2><p>下半身メイン<br>脚・お尻を中心に引き締める</p><button onclick="selectMenu('A')" aria-label="Aメニュー"></button></div>
-<div class="choice b"><h2>Bメニュー</h2><p>全身バランス<br>全身をバランスよく鍛える</p><button onclick="selectMenu('B')" aria-label="Bメニュー"></button></div>
-<button class="ghost" onclick="show('details')">メニューの詳細を見る</button>
-</section>
+  <main>
+    <section id="home" class="screen active">
+      <div class="card hero">
+        <div class="heroRow">
+          <div><div class="eyebrow" style="color:#b9cae0">TODAY</div><h1 class="title">Day <span id="dayNo">1</span></h1><p class="sub">今日の分だけ。終わったらカレンダーに記録。</p></div>
+          <div class="ring"><span><span id="doneDays">0</span><small>/30</small></span></div>
+        </div>
+      </div>
+      <h2 class="sectionTitle">30日カレンダー</h2>
+      <div id="calendar" class="calendar"></div>
+      <button class="cta" onclick="showScreen('plans')">今日のトレーニングを開始</button>
+    </section>
 
-<section id="details" class="screen">
-<h1 class="screen-title">メニュー詳細</h1>
-<div class="card"><h2 style="color:#288ed1">Aメニュー</h2><div class="exercise-list" id="alist"></div></div>
-<div class="card"><h2 style="color:#e44775">Bメニュー</h2><div class="exercise-list" id="blist"></div></div>
-<button class="ghost" onclick="show('menu')">戻る</button>
-</section>
+    <section id="plans" class="screen">
+      <button class="back" onclick="showScreen('home')">← 戻る</button>
+      <div class="eyebrow">TODAY'S WORKOUT</div><h1 class="title">メニューを選択</h1><p class="sub">AとBを交互に進めればOK。</p>
+      <div class="planGrid">
+        <button class="plan blue" onclick="selectPlan('A')">
+          <div class="planTag">A MENU</div><h2>下半身メイン</h2><p>脚・お尻・体幹を中心に5種目</p>
+          <div class="chips"><span class="chip">5種目</span><span class="chip">約12分</span></div>
+        </button>
+        <button class="plan pink" onclick="selectPlan('B')">
+          <div class="planTag">B MENU</div><h2>全身バランス</h2><p>上半身も含めて全身を5種目</p>
+          <div class="chips"><span class="chip">5種目</span><span class="chip">約12分</span></div>
+        </button>
+      </div>
+      <div id="previewList" class="exerciseList"></div>
+    </section>
 
-<section id="player" class="screen player">
-<div class="player-head"><span id="menuName">Aメニュー</span><span id="stepNum">1 / 5</span></div>
-<div class="progress"><i id="bar"></i></div>
-<h1 id="exName">スクワット</h1><div class="target" id="exTarget">15回</div>
-<div class="visual"><img id="exImage" src="squat.jpg"><div class="badge">動きを見ながら実行</div></div>
-<div class="count"><span id="count">0</span><small id="countSuffix"> / 15</small></div>
-<div class="tip" id="tip">💡 お尻を後ろへ引きながらゆっくり上下。</div>
-<button class="primary" id="pauseBtn" onclick="togglePause()">一時停止</button>
-<button class="ghost" onclick="finishExercise()">この種目を完了</button>
-</section>
+    <section id="workout" class="screen">
+      <div class="workTop"><button class="back" style="margin:0" onclick="quitWorkout()">← 終了</button><b id="stepText">1 / 5</b></div>
+      <div class="progress"><i id="progressBar"></i></div>
+      <h1 id="exerciseName" class="workTitle">スクワット</h1>
+      <div id="exerciseTarget" class="target">15回</div>
+      <div class="visual"><img id="exerciseImg" alt=""><div class="guideBadge">フォームを見ながら実行</div></div>
+      <div id="exerciseTip" class="tip"></div>
+      <div class="countbox"><span id="count" class="count">0<small> / 15</small></span></div>
+      <div class="sessionBtns"><button id="pauseBtn" class="pause" onclick="togglePause()">一時停止</button><button class="next" onclick="finishExercise()">完了 →</button></div>
+    </section>
 
-<section id="rest" class="screen rest">
-<h1>休憩</h1><div class="muted">次の種目まで</div>
-<div class="ring-wrap"><div class="ring" id="ring"></div><div class="restnum" id="restNum">45</div></div>
-<div class="card next">次の種目<br><b id="nextName">ワイドスクワット</b></div>
-<button class="ghost" onclick="skipRest()">休憩をスキップ</button>
-</section>
+    <section id="rest" class="screen">
+      <div class="restWrap">
+        <div class="eyebrow">REST</div><h1 class="title">45秒休憩</h1><p class="sub">呼吸を整えて、次の種目へ。</p>
+        <div id="restCircle" class="restCircle" style="--rest:100%"><span id="restNum" class="restNum">45</span></div>
+        <div class="card nextCard"><img id="nextImg" alt=""><div><small>次の種目</small><b id="nextName"></b><span id="nextTarget" class="sub"></span></div></div>
+        <button class="secondary" onclick="skipRest()">休憩をスキップ</button>
+      </div>
+    </section>
 
-<section id="complete" class="screen complete">
-<div class="emoji">🎉</div><div class="muted">今日のトレーニング</div><h1>おつかれさまでした！</h1>
-<div class="summary"><div>実施<b id="sumMenu">A</b></div><div>種目<b>5/5</b></div><div>時間<b id="sumTime">約7分</b></div></div>
-<button class="primary" onclick="recordComplete()">カレンダーに記録する</button><button class="ghost" onclick="show('home')">ホームに戻る</button>
-</section>
+    <section id="complete" class="screen">
+      <div class="doneBox">
+        <div class="check">✓</div><div class="eyebrow">COMPLETE</div><h1 class="title">今日のトレーニング完了！</h1><p class="sub">記録を30日カレンダーに保存した。</p>
+        <div class="stats"><div class="stat"><b>5</b><small>種目</small></div><div class="stat"><b>約12</b><small>分</small></div><div class="stat"><b id="streak">1</b><small>連続日</small></div></div>
+        <button class="cta" onclick="showScreen('home')">カレンダーを見る</button>
+      </div>
+    </section>
+  </main>
 
-<section id="record" class="screen">
-<h1 class="screen-title">記録</h1><div class="record-grid"><div class="stat">🔥 連続記録<strong id="streak">0日</strong></div><div class="stat">🏆 完了<strong id="done">0回</strong></div></div>
-<div class="card"><b>体重の見方</b><p class="note">日々の上下より、7日単位の流れで見る。急激な減量は狙わず、体調に異変がある場合は中止してください。</p></div>
-</section>
-
-<section id="settings" class="screen">
-<h1 class="screen-title">設定・コツ</h1><div class="card"><p>① 筋トレは週3回</p><p>② 有酸素は週2回</p><p>③ 歩数を少しずつ増やす</p><p>④ 夜の間食を減らす</p><p>⑤ 体重は7日単位で見る</p></div>
-</section>
-</main>
-<nav class="nav"><button onclick="show('home')"><b>⌂</b>ホーム</button><button onclick="show('menu')"><b>☷</b>メニュー</button><button onclick="show('record')"><b>◉</b>記録</button><button onclick="show('settings')"><b>⚙</b>設定</button></nav>
+  <nav class="nav">
+    <button onclick="showScreen('home')"><b>⌂</b>ホーム</button>
+    <button onclick="showScreen('plans')"><b>▦</b>メニュー</button>
+    <button onclick="resetData()"><b>↺</b>記録リセット</button>
+  </nav>
 </div>
+<div id="toast" class="toast"></div>
+
 <script>
-const MENUS={
+const plans={
 A:[
-{name:"スクワット",target:"15回",max:15,kind:"reps",img:"squat.jpg",tip:"💡 胸を起こし、お尻を後ろへ。膝とつま先は同じ方向。"},
-{name:"ワイドスクワット",target:"15回",max:15,kind:"reps",img:"wide_squat.jpg",tip:"💡 足幅を広めに。内ももとお尻を意識して上下。"},
-{name:"バックランジ",target:"左右 各12回",max:24,kind:"reps",img:"back_lunge.jpg",tip:"💡 片脚を真後ろへ引き、前脚のかかとで戻る。"},
-{name:"ヒップリフト",target:"15回",max:15,kind:"reps",img:"hip_bridge_a.jpg",tip:"💡 かかとで床を押し、お尻を締めて持ち上げる。"},
-{name:"プランク",target:"30秒",max:30,kind:"seconds",img:"plank.jpg",tip:"💡 頭からかかとまで一直線。腰を反らさない。"}
+ {name:"スクワット",target:"15回",max:15,kind:"reps",img:"squat.jpg",tip:"💡 胸を起こしたまま、お尻を後ろへ。膝とつま先は同じ方向。"},
+ {name:"ワイドスクワット",target:"15回",max:15,kind:"reps",img:"wide_squat.jpg",tip:"💡 足を広めに。つま先を少し外へ向け、膝も同じ方向へ。"},
+ {name:"バックランジ",target:"左右 各12回",max:24,kind:"reps",img:"back_lunge.jpg",tip:"💡 片脚を真後ろへ引き、上体を立てたまま真下へ沈む。"},
+ {name:"ヒップリフト",target:"15回",max:15,kind:"reps",img:"hip_bridge_a.jpg",tip:"💡 かかとで床を押し、お尻を締めながらゆっくり上げ下げ。"},
+ {name:"プランク",target:"30秒",max:30,kind:"seconds",img:"plank.jpg",tip:"💡 頭からかかとまで一直線。腰を反らさず30秒キープ。"}
 ],
 B:[
-{name:"サイドランジ",target:"左右 各12回",max:24,kind:"reps",img:"side_lunge.jpg",tip:"💡 横へ大きく踏み、踏み出した側のお尻を後ろへ。"},
-{name:"腕立て伏せ",target:"12回",max:12,kind:"reps",img:"pushup.jpg",tip:"💡 頭からかかとまで一直線。胸を床へ近づける。"},
-{name:"バードドッグ",target:"左右 各12回",max:24,kind:"reps",img:"bird_dog.jpg",tip:"💡 右手＋左脚、左手＋右脚をまっすぐ伸ばす。"},
-{name:"サイドプランク",target:"左右 各30秒",max:60,kind:"seconds",img:"side_plank.jpg",tip:"💡 肩の真下に肘。頭から足まで一直線を保つ。"},
-{name:"ヒップアブダクション",target:"左右 各15回",max:30,kind:"reps",img:"hip_abduction.jpg",tip:"💡 横向きで体を一直線にし、上の脚をゆっくり上げ下げ。"}
+ {name:"サイドランジ",target:"左右 各12回",max:24,kind:"reps",img:"side_lunge.jpg",tip:"💡 横へ大きく踏み、踏み出した側のお尻を後ろへ。"},
+ {name:"腕立て伏せ",target:"12回",max:12,kind:"reps",img:"pushup.jpg",tip:"💡 頭からかかとまで一直線。きつければ膝をついてOK。"},
+ {name:"バードドッグ",target:"左右 各12回",max:24,kind:"reps",img:"bird_dog.jpg",tip:"💡 右手＋左脚、左手＋右脚をまっすぐ伸ばす。"},
+ {name:"ヒップアブダクション",target:"左右 各15回",max:30,kind:"reps",img:"hip_abduction.jpg",tip:"💡 横向きで体を一直線にし、上の脚を反動なしで上げ下げ。"},
+ {name:"サイドプランク",target:"左右 各30秒",max:60,kind:"seconds",img:"side_plank.jpg",tip:"💡 肩の真下に肘。腰を落とさず一直線をキープ。"}
 ]};
-let currentMenu="A",idx=0,countN=0,auto=null,paused=false,restTimer=null,restSec=45,startAt=0;
-function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");document.getElementById("app").classList.toggle("hidden-nav",["player","rest","complete"].includes(id));scrollTo(0,0)}
-function showMenu(){show("menu")}
-function selectMenu(m){currentMenu=m;idx=0;startAt=Date.now();loadExercise();show("player")}
+let planKey="A",idx=0,count=0,timer=null,paused=false,restTimer=null,restLeft=45;
+const $=id=>document.getElementById(id);
+
+function showScreen(id){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+ $(id).classList.add("active");
+ if(id==="home") renderHome();
+ if(id==="plans") renderPreview();
+ window.scrollTo({top:0,behavior:"instant"});
+}
+function renderHome(){
+ const today=new Date(), startKey="ietoreStartDate";
+ let start=localStorage.getItem(startKey);
+ if(!start){start=today.toISOString().slice(0,10);localStorage.setItem(startKey,start)}
+ const startDate=new Date(start+"T00:00:00");
+ const day=Math.min(30,Math.max(1,Math.floor((today-startDate)/86400000)+1));
+ $("dayNo").textContent=day;
+ const done=JSON.parse(localStorage.getItem("ietoreDone")||"[]");
+ $("doneDays").textContent=done.length;
+ const cal=$("calendar");cal.innerHTML="";
+ for(let i=1;i<=30;i++){const d=document.createElement("div");d.className="day"+(done.includes(i)?" done":"")+(i===day?" today":"");d.textContent=i;cal.appendChild(d)}
+}
+function renderPreview(){
+ const list=$("previewList");list.innerHTML="";
+ ["A","B"].forEach(k=>{
+   plans[k].forEach((e,i)=>{
+     const div=document.createElement("div");div.className="exerciseItem";
+     div.innerHTML=`<img src="${e.img}" alt=""><div><b>${k}${i+1}. ${e.name}</b><span>${e.target}</span></div>`;
+     list.appendChild(div);
+   })
+ })
+}
+function selectPlan(k){planKey=k;idx=0;count=0;showScreen("workout");loadExercise()}
 function loadExercise(){
- clearInterval(auto); paused=false; pauseBtn.textContent="一時停止"; countN=0;
- const e=MENUS[currentMenu][idx]; menuName.textContent=currentMenu+"メニュー";stepNum.textContent=(idx+1)+" / 5";bar.style.width=((idx+1)*20)+"%";
- exName.textContent=e.name;exTarget.textContent=e.target;exImage.src=e.img;tip.textContent=e.tip;count.textContent=0;
- countSuffix.textContent=" / "+e.max+(e.kind==="seconds"?"秒":"");
- const interval=e.kind==="seconds"?1000:2200;
- auto=setInterval(()=>{if(paused)return;countN++;count.textContent=countN;if(countN>=e.max){clearInterval(auto);setTimeout(finishExercise,500)}},interval)
+ clearTimers();paused=false;$("pauseBtn").textContent="一時停止";
+ const ex=plans[planKey][idx];
+ $("stepText").textContent=`${idx+1} / ${plans[planKey].length}`;
+ $("progressBar").style.width=`${((idx+1)/plans[planKey].length)*100}%`;
+ $("exerciseName").textContent=ex.name;$("exerciseTarget").textContent=ex.target;
+ $("exerciseImg").src=ex.img;$("exerciseTip").textContent=ex.tip;count=0;updateCount();
+ const speed=ex.kind==="seconds"?1000:2200;
+ timer=setInterval(()=>{if(paused)return;if(count<ex.max){count++;updateCount()}else finishExercise()},speed);
 }
-function togglePause(){paused=!paused;pauseBtn.textContent=paused?"再開":"一時停止"}
+function updateCount(){
+ const ex=plans[planKey][idx],unit=ex.kind==="seconds"?"秒":"";
+ $("count").innerHTML=`${count}${unit}<small> / ${ex.max}${unit}</small>`;
+}
+function togglePause(){paused=!paused;$("pauseBtn").textContent=paused?"再開":"一時停止"}
 function finishExercise(){
- clearInterval(auto);
- if(idx>=4){sumMenu.textContent=currentMenu;let min=Math.max(1,Math.round((Date.now()-startAt)/60000));sumTime.textContent="約"+min+"分";show("complete");return}
- nextName.textContent=MENUS[currentMenu][idx+1].name;restSec=45;restNum.textContent=45;ring.style.setProperty("--deg","0deg");show("rest");
- clearInterval(restTimer);restTimer=setInterval(()=>{restSec--;restNum.textContent=restSec;ring.style.setProperty("--deg",((45-restSec)/45*360)+"deg");if(restSec<=0)skipRest()},1000)
+ clearTimers();
+ if(idx>=plans[planKey].length-1){completeWorkout();return}
+ restLeft=45;const next=plans[planKey][idx+1];
+ $("nextImg").src=next.img;$("nextName").textContent=next.name;$("nextTarget").textContent=next.target;
+ showScreen("rest");renderRest();
+ restTimer=setInterval(()=>{restLeft--;renderRest();if(restLeft<=0)skipRest()},1000)
 }
-function skipRest(){clearInterval(restTimer);idx++;loadExercise();show("player")}
-function recordComplete(){
- let d=+(localStorage.getItem("done")||0)+1;localStorage.setItem("done",d);localStorage.setItem("daydone","1");done.textContent=d+"回";streak.textContent=d+"日";renderDays();show("home")
+function renderRest(){
+ $("restNum").textContent=restLeft;
+ $("restCircle").style.setProperty("--rest",`${(restLeft/45)*100}%`);
 }
-function renderDays(){days.innerHTML="";let completed=localStorage.getItem("daydone")==="1";for(let i=1;i<=30;i++){let el=document.createElement("div");el.className="day "+(i===1?(completed?"done":"today"):"");el.textContent=i;days.appendChild(el)}}
-function listHTML(menu){return MENUS[menu].map(e=>`<div class="exercise-row"><img src="${e.img}"><div><b>${e.name}</b></div><small>${e.target}</small></div>`).join("")}
-alist.innerHTML=listHTML("A");blist.innerHTML=listHTML("B");renderDays();let d=localStorage.getItem("done")||0;done.textContent=d+"回";streak.textContent=d+"日";
-if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister()));if(window.caches)caches.keys().then(ks=>ks.forEach(k=>caches.delete(k)))}
+function skipRest(){clearInterval(restTimer);restTimer=null;idx++;showScreen("workout");loadExercise()}
+function completeWorkout(){
+ const today=new Date(),start=new Date((localStorage.getItem("ietoreStartDate")||today.toISOString().slice(0,10))+"T00:00:00");
+ const day=Math.min(30,Math.max(1,Math.floor((today-start)/86400000)+1));
+ let done=JSON.parse(localStorage.getItem("ietoreDone")||"[]");if(!done.includes(day))done.push(day);done.sort((a,b)=>a-b);localStorage.setItem("ietoreDone",JSON.stringify(done));
+ let streak=0;for(let i=day;i>=1;i--){if(done.includes(i))streak++;else break}$("streak").textContent=streak;
+ showScreen("complete")
+}
+function quitWorkout(){clearTimers();showScreen("plans")}
+function clearTimers(){if(timer)clearInterval(timer);timer=null;if(restTimer)clearInterval(restTimer);restTimer=null}
+function resetData(){if(confirm("30日カレンダーの記録をリセットしますか？")){localStorage.removeItem("ietoreDone");localStorage.removeItem("ietoreStartDate");toast("記録をリセットしました");renderHome()}}
+function toast(t){$("toast").textContent=t;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),1800)}
+if("serviceWorker" in navigator){
+ navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister()));
+ caches?.keys?.().then(keys=>keys.forEach(k=>caches.delete(k)));
+}
+renderHome();
 </script>
 </body></html>

@@ -1,10 +1,10 @@
 {
-  "name": "家トレ減量 30DAYS",
-  "short_name": "家トレ30DAYS",
-  "start_url": "./",
+  "name": "家トレ減量 30 DAYS",
+  "short_name": "家トレ30",
+  "start_url": "./?v=24",
   "display": "standalone",
-  "background_color": "#f5f7fb",
-  "theme_color": "#071d3a",
+  "background_color": "#ffffff",
+  "theme_color": "#0b1f3a",
   "icons": [
     {
       "src": "icon-192.png",
